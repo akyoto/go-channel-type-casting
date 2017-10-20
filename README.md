@@ -78,4 +78,4 @@ switch dataTypeName {
 	}
 ```
 
-This is far from ideal. I am keeping this example short, in reality there are far more data types than listed here. Every time I add a new datatype, I have to update this switch/case statement. In short, it's a maintenance horror.
+This is of course far from an ideal solution. I am keeping this example short, in reality there are far more data types than listed here. Every time I add a new datatype, I have to update this switch/case statement. In short, it's a maintenance horror.
