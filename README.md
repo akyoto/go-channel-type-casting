@@ -1,4 +1,4 @@
-# go-channel-type-casting
+# Type-casting interface{} to chan interface{}
 
 This is an experience report for the Go programming language.
 
@@ -25,14 +25,14 @@ As the web developer, I am now calling this function in the route that performs 
 stream, err := arn.DB.All(dataTypeName)
 ```
 
-However, I can't do a `for range` loop over this stream of objects.
+`stream` is of type `interface{}` at this point. However, I can't do a `for range` loop over this stream.
 
 My first attempt, which seemed logical to me, was casting the type to a generic channel `chan interface{}`.
 
 ```go
 for obj := range stream.(chan interface{}) {
-		process(obj)
-	}
+	process(obj)
+}
 ```
 
 At runtime, I get the following error:
@@ -41,7 +41,7 @@ At runtime, I get the following error:
 interface conversion: interface {} is chan *User, not chan interface {}
 ```
 
-This means you can only type-cast the channel to the 100% correct type, not a slightly more generic version of the type.
+This means you can only type-cast the channel to the 100% correct type, not a slightly more generic version of the type. You can type-cast it to `chan *User` but `chan interface{}` doesn't work.
 
 The only workaround I could think of is writing unmaintainable code using `switch` / `case` statements:
 
