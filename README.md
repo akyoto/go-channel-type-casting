@@ -22,7 +22,7 @@ func (db *Database) All(table string) (interface{}, error) {
 As the web developer, I am now calling this function in the route that performs the DB search:
 
 ```go
-stream, err := arn.DB.All(dataTypeName)
+stream, err := DB.All(dataTypeName)
 ```
 
 `stream` is of type `interface{}` at this point. However, I can't do a `for range` loop over this stream.
@@ -78,4 +78,4 @@ switch dataTypeName {
 	}
 ```
 
-This is of course far from an ideal solution. I am keeping this example short, in reality there are far more data types than listed here. Every time I add a new datatype, I have to update this switch/case statement. In short, it's a maintenance horror.
+This is of course far from an ideal solution. I am keeping this example short, in reality there are far more data types than listed here. Every time I add a new datatype, I have to update this `switch`/`case` statement. In short, it's a maintenance horror.
